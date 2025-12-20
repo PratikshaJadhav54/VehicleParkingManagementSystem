@@ -39,5 +39,7 @@ public class Vehicle {
     @Column(nullable = false)
     private boolean isVehicleActive;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="resident_id")
+    private Resident resident;
 }

@@ -26,5 +26,10 @@ public class Visitors {
 
     public enum VisitorsType{
     GUEST,DELIVERY}
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="resident_id")
+    private Resident resident;
+
 }
 
