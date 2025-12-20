@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Resident
@@ -39,5 +41,9 @@ public class Resident
     }
 
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "resident")
+    private List<Vehicle> vehicleList;
 
+    @OneToMany(cascade =CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "resident")
+    private List<Visitors> visitorsList;
 }
