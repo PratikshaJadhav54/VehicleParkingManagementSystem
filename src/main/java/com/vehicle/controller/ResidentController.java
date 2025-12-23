@@ -1,3 +1,4 @@
+
 package com.vehicle.controller;
 
 import com.vehicle.entity.Resident;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/resident")
-public class ResidedntController {
+@RequestMapping("/api/resident")
+public class ResidentController {
 
     @Autowired
     ResidentService residentService;
