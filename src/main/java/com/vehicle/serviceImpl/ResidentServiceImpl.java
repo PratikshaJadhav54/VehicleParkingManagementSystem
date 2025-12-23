@@ -1,3 +1,4 @@
+
 package com.vehicle.serviceImpl;
 
 import com.vehicle.entity.Resident;
@@ -14,7 +15,11 @@ public class ResidentServiceImpl implements ResidentService {
 
     @Override
     public Resident saveResident(Resident resident) {
-        Resident residentInDb=residentRepository.save(resident);
-        return residentInDb;
+        if (resident.getVehicleList() != null) {
+            resident.getVehicleList().forEach(vehicle -> {
+                vehicle.setResident(resident);
+            });
+        }
+        return residentRepository.save(resident);
     }
 }

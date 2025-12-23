@@ -1,5 +1,7 @@
 package com.vehicle.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -12,8 +14,8 @@ public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     @Column(nullable = false)
+    @Schema(hidden = true)
     private int vehicleId;
     @NotNull
     @Column(nullable = false)
@@ -37,9 +39,13 @@ public class Vehicle {
     private LocalDateTime associationDeactivatedAt;
     @NotNull
     @Column(nullable = false)
-    private boolean isVehicleActive;
+    @JsonProperty("vehicleActive")
+    private boolean isVehicleActivae;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="resident_id")
+    @Schema(hidden = true)
     private Resident resident;
+
+
 }

@@ -1,3 +1,4 @@
+
 package com.vehicle.entity;
 
 import jakarta.persistence.*;
@@ -25,11 +26,10 @@ public class Visitors {
     private VisitorsType visitorsType;
 
     public enum VisitorsType{
-    GUEST,DELIVERY}
+        GUEST,DELIVERY}
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="resident_id")
     private Resident resident;
 
 }
-
