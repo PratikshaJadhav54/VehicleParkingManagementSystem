@@ -1,5 +1,6 @@
 package com.vehicle.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -38,13 +39,14 @@ public class Vehicle {
     private LocalDateTime associationActivatedAt;
     private LocalDateTime associationDeactivatedAt;
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false,name="is_vehicle_active")
     @JsonProperty("vehicleActive")
-    private boolean isVehicleActivae;
+    private boolean isVehicleActive;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="resident_id")
     @Schema(hidden = true)
+    @JsonBackReference
     private Resident resident;
 
 

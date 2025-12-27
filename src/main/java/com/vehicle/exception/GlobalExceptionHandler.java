@@ -26,4 +26,11 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
+
+        @ExceptionHandler(ResidentNotFoundException.class)
+        public ResponseEntity<String> handlerResidentNotFound(ResidentNotFoundException residentNotFoundException)
+        {
+            return new ResponseEntity<>(residentNotFoundException.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
 }

@@ -3,7 +3,9 @@ package com.vehicle.dto.request;
 import com.vehicle.entity.Vehicle;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class VehicleRequestDTO {
 
     @NotBlank(message = "registration umber is required")
@@ -16,6 +18,16 @@ public class VehicleRequestDTO {
 
     @NotNull(message = "vehicle type is required")
     private Vehicle.Type type;
+
+    private Boolean vehicleActive;
+
+    public Boolean getVehicleActive() {
+        return vehicleActive;
+    }
+
+    public void setVehicleActive(Boolean vehicleActive) {
+        this.vehicleActive = vehicleActive;
+    }
 
     public String getRegistrationNumber() {
         return registrationNumber;
