@@ -14,6 +14,6 @@ public interface ResidentRepository extends JpaRepository<Resident,Integer> {
 //    @Query("SELECT r from resident r left outer join vehicle v")
 //    List<Resident> findAllWithVehicles();
 
-    @Query("SELECT r FROM Resident r WHERE r.fName = :fName")
-    List<Resident> findByFirstName(@Param("fName") String fName);
+    @Query("SELECT r FROM Resident r WHERE r.fName = :fName and r.lName=:lName")
+    List<Resident> findByFirstName(@Param("fName") String fName,@Param("lName") String lName);
 }
