@@ -33,10 +33,10 @@ public class ResidentController {
       return new ResponseEntity<>(allResident, HttpStatus.FOUND);
     }
 
-    @GetMapping("/getByResidentName/{f_name}")
-    public ResponseEntity<List<Resident>> getResidentByName(@PathVariable ("f_name") String f_name)
+    @GetMapping("/getByResidentName/{f_name}/{l_name}")
+    public ResponseEntity<List<Resident>> getResidentByName(@PathVariable ("f_name") String f_name,@PathVariable("l_name") String l_name)
     {
-        List<Resident> getByName =residentService.getResidentByName(f_name);
+        List<Resident> getByName =residentService.getResidentByName(f_name,l_name);
         return new ResponseEntity<>(getByName, HttpStatus.FOUND);
     }
 }

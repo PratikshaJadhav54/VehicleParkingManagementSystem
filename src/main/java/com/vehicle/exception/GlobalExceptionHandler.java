@@ -33,4 +33,15 @@ public class GlobalExceptionHandler {
             return new ResponseEntity<>(residentNotFoundException.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
+        @ExceptionHandler(ConstraintViolationFirstNameException.class)
+        public ResponseEntity<String> handlerConstraintViolationFirstNameException(ConstraintViolationFirstNameException constraintViolationFirstNameException)
+        {
+            return new ResponseEntity<>(constraintViolationFirstNameException.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+        @ExceptionHandler(ConstraintViolationLastNameException.class)
+        public ResponseEntity<String> handlerConstraintViolationLastNameException(ConstraintViolationLastNameException constraintViolationLastNameException)
+        {
+            return new ResponseEntity<>(constraintViolationLastNameException.getMessage(), HttpStatus.BAD_REQUEST);
+        }
 }
