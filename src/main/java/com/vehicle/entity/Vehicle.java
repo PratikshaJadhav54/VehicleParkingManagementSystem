@@ -1,13 +1,16 @@
 package com.vehicle.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Entity
 @Data
@@ -18,8 +21,9 @@ public class Vehicle {
     @Column(nullable = false)
     @Schema(hidden = true)
     private int vehicleId;
-    @NotNull
+
     @Column(nullable = false)
+    @NotBlank(message = "Registration Number Are Required")
     private String registrationNumber;
     @NotNull
     @Column(nullable = false)
@@ -32,12 +36,14 @@ public class Vehicle {
     private Type type;
 
     public enum Type{
-        CAR,MOPED,BIKE
+        CAR,MOPED,BIKE,SCOOTER
     }
     @NotNull
     @Column(nullable = false)
-    private LocalDateTime associationActivatedAt;
-    private LocalDateTime associationDeactivatedAt;
+    private OffsetDateTime associationActivatedAt;
+
+    private OffsetDateTime associationDeactivatedAt;
+
     @NotNull
     @Column(nullable = false,name="is_vehicle_active")
     @JsonProperty("vehicleActive")
