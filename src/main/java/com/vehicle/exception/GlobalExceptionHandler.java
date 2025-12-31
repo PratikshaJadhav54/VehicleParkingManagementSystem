@@ -44,4 +44,10 @@ public class GlobalExceptionHandler {
         {
             return new ResponseEntity<>(constraintViolationLastNameException.getMessage(), HttpStatus.BAD_REQUEST);
         }
+
+        @ExceptionHandler(InvalidRegistrationNumberException.class)
+        public ResponseEntity<String> handlerInvalidRegistrationNo(InvalidRegistrationNumberException invalidRegistrationNumberException)
+        {
+            return new ResponseEntity<>(invalidRegistrationNumberException.getMessage(), HttpStatus.BAD_REQUEST);
+        }
 }

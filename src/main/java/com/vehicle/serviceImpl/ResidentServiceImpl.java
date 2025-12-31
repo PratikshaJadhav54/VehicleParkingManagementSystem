@@ -7,6 +7,7 @@ import com.vehicle.entity.Resident;
 import com.vehicle.entity.Vehicle;
 import com.vehicle.exception.ConstraintViolationFirstNameException;
 import com.vehicle.exception.ConstraintViolationLastNameException;
+import com.vehicle.exception.InvalidRegistrationNumberException;
 import com.vehicle.exception.ResidentNotFoundException;
 import com.vehicle.repository.ResidentRepository;
 import com.vehicle.service.ResidentService;
@@ -56,6 +57,20 @@ public class ResidentServiceImpl implements ResidentService {
         }
 
         return findByName;
+    }
+
+    @Override
+    public Resident getResidentByRegistrationNo(String registrationNo) {
+       Resident getByDb= residentRepository.findByRegistrationNo(registrationNo).orElseThrow(()->new ResidentNotFoundException("Resident not found for registration number"));
+
+        if(registrationNo.length()==10)
+        {
+            residentRepository.findByRegistrationNo(registrationNo);
+        }
+        else {
+            throw new InvalidRegistrationNumberException("Invalid Registration Number");
+        }
+        return getByDb;
     }
 
 }

@@ -22,7 +22,7 @@ public class Vehicle {
     @Schema(hidden = true)
     private int vehicleId;
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     @NotBlank(message = "Registration Number Are Required")
     private String registrationNumber;
     @NotNull
