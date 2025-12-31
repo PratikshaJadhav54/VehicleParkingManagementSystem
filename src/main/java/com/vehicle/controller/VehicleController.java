@@ -21,4 +21,5 @@ public class VehicleController {
         Vehicle savedVehicle=vehicleService.save(vehicle,resident_id);
         return new ResponseEntity<>(savedVehicle, HttpStatus.CREATED);
     }
+
 }

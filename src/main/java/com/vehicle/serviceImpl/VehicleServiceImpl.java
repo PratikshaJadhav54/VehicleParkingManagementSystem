@@ -24,4 +24,6 @@ public class VehicleServiceImpl implements VehicleService {
         vehicle.setResident(residentIdInDb);
        return  vehicleRepository.save(vehicle);
     }
+
+
 }
